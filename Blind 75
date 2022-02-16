@@ -1,0 +1,16 @@
+---------------------------------------Two Sum------------------------------
+---Given an array of integers nums and an integer target, return indices of the two numbers such that they add up to target.--------
+class Solution:
+    def twoSum(self, nums: List[int], target: int) -> List[int]:
+
+        hashmap = {}
+        for i in range(len(nums)):
+            complement = target - nums[i]
+# this checks in directly dictionary keys and this in mydict is in fact a lot faster than  in keys_list, since dicts are hash tables
+#, so finding the element inside it is O(1). While foo in keys_list would be O(n) (slower as the number of keys grows bigger)   
+# https://stackoverflow.com/questions/4867341/does-the-in-clause-used-on-python-dictionaries-call-the-keys-function-every
+            
+            if complement in hashmap:
+                return [hashmap[complement],i]
+            else:
+                hashmap[nums[i]] = i
